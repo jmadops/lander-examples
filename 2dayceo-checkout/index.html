@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout — The 2 Day CEO by Skylar Lewis</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="checkout.css">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="checkout-header">
+    <div class="container">
+      <img src="assets/logo-2dayceo-wide.webp" alt="The 2 Day CEO" class="checkout-header__logo">
+      <div class="checkout-header__secure">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+        <span>Secure Checkout</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- CHECKOUT CONTENT -->
+  <main class="checkout">
+    <div class="container checkout__inner">
+
+      <!-- LEFT: ORDER SUMMARY -->
+      <div class="checkout__summary-col">
+        <div class="order-summary">
+          <h3 class="order-summary__title">Order Summary</h3>
+
+          <!-- Product Selection -->
+          <div class="product-options">
+            <label class="product-option">
+              <input type="radio" name="product" value="digital" data-price="9.99">
+              <div class="product-option__content">
+                <div class="product-option__header">
+                  <span class="product-option__name">Digital Book</span>
+                  <span class="product-option__price">$9.99</span>
+                </div>
+                <span class="product-option__desc">Instant access — PDF + ePub</span>
+              </div>
+            </label>
+            <label class="product-option product-option--popular">
+              <div class="product-option__badge">Most Popular</div>
+              <input type="radio" name="product" value="bundle" data-price="19.99" checked>
+              <div class="product-option__content">
+                <div class="product-option__header">
+                  <span class="product-option__name">Physical + Digital Bundle</span>
+                  <span class="product-option__price">$19.99</span>
+                </div>
+                <span class="product-option__desc">Hardcover shipped to you + instant digital access</span>
+              </div>
+            </label>
+          </div>
+
+          <!-- Order Bump -->
+          <div class="order-bump">
+            <label class="order-bump__inner">
+              <div class="order-bump__checkbox">
+                <input type="checkbox" id="audiobookBump" data-price="27.00">
+                <span class="order-bump__check"></span>
+              </div>
+              <div class="order-bump__content">
+                <p class="order-bump__tag">ONE-TIME OFFER — Add this now and save!</p>
+                <p class="order-bump__title">Add the Audiobook — <strong>$27</strong></p>
+                <p class="order-bump__desc">Listen to The 2 Day CEO on your commute, at the gym, or between meetings. Narrated for busy entrepreneurs who want to absorb the framework on the go. Instant access after checkout.</p>
+              </div>
+            </label>
+          </div>
+
+          <!-- Book Preview -->
+          <div class="order-summary__book">
+            <img src="assets/book-mockup-3d-small.png" alt="The 2 Day CEO">
+          </div>
+
+          <!-- Line Items -->
+          <div class="order-summary__lines">
+            <div class="order-line">
+              <span id="productName">Physical + Digital Bundle</span>
+              <span id="productPrice">$19.99</span>
+            </div>
+            <div class="order-line order-line--bump" id="bumpLine" style="display: none;">
+              <span>Audiobook Add-on</span>
+              <span id="bumpPrice">$27.00</span>
+            </div>
+            <div class="order-line" id="shippingLine">
+              <span>Shipping &amp; Handling</span>
+              <span id="shippingPrice">$7.95</span>
+            </div>
+            <div class="order-line order-line--total">
+              <span>Total</span>
+              <span id="totalPrice">$27.94</span>
+            </div>
+          </div>
+
+          <!-- Guarantee -->
+          <div class="guarantee">
+            <div class="guarantee__icon">&#128170;</div>
+            <p class="guarantee__text"><strong>100% Satisfaction Guarantee.</strong> If the book doesn't change how you run your business, reach out within 30 days and we'll make it right.</p>
+          </div>
+
+          <!-- Testimonial -->
+          <div class="mini-testimonial">
+            <p class="mini-testimonial__quote">"$1M to $31M in sales over the last 3 years because of Rise Up Kings and what Skylar teaches."</p>
+            <p class="mini-testimonial__name">— Jared Hellum, CEO of Constructable</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: ORDER FORM -->
+      <div class="checkout__form-col">
+
+        <!-- Step indicator -->
+        <div class="steps">
+          <div class="step step--active">
+            <span class="step__num">1</span>
+            <span class="step__label">Your Info</span>
+          </div>
+          <div class="step__divider"></div>
+          <div class="step">
+            <span class="step__num">2</span>
+            <span class="step__label">Payment</span>
+          </div>
+        </div>
+
+        <form id="checkoutForm" novalidate>
+
+          <!-- Step 1: Contact + Shipping -->
+          <div class="form-section" id="step1">
+            <h2 class="form-section__title">Contact Information</h2>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="firstName">First Name</label>
+                <input type="text" id="firstName" placeholder="First name" required>
+              </div>
+              <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input type="text" id="lastName" placeholder="Last name" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="coEmail">Email Address</label>
+              <input type="email" id="coEmail" placeholder="your@email.com" required>
+            </div>
+            <div class="form-group">
+              <label for="coPhone">Phone (optional)</label>
+              <input type="tel" id="coPhone" placeholder="(555) 123-4567">
+            </div>
+
+            <h2 class="form-section__title">Shipping Address</h2>
+            <div class="form-group">
+              <label for="coAddress">Street Address</label>
+              <input type="text" id="coAddress" placeholder="123 Main St" required>
+            </div>
+            <div class="form-group">
+              <label for="coAddress2">Apt / Suite / Unit (optional)</label>
+              <input type="text" id="coAddress2" placeholder="Apt 4B">
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="coCity">City</label>
+                <input type="text" id="coCity" placeholder="City" required>
+              </div>
+              <div class="form-group">
+                <label for="coState">State</label>
+                <input type="text" id="coState" placeholder="State" required>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="coZip">Zip Code</label>
+                <input type="text" id="coZip" placeholder="12345" required>
+              </div>
+              <div class="form-group">
+                <label for="coCountry">Country</label>
+                <select id="coCountry">
+                  <option value="US">United States</option>
+                  <option value="CA">Canada</option>
+                  <option value="GB">United Kingdom</option>
+                  <option value="AU">Australia</option>
+                  <option value="OTHER">Other</option>
+                </select>
+              </div>
+            </div>
+
+            <button type="button" class="btn btn--cta btn--full" id="toStep2">CONTINUE TO PAYMENT &rarr;</button>
+          </div>
+
+          <!-- Step 2: Payment -->
+          <div class="form-section form-section--hidden" id="step2">
+            <h2 class="form-section__title">Payment Information</h2>
+
+            <div class="form-group">
+              <label for="cardName">Name on Card</label>
+              <input type="text" id="cardName" placeholder="Name as it appears on card" required>
+            </div>
+            <div class="form-group">
+              <label for="cardNumber">Card Number</label>
+              <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" required>
+            </div>
+            <div class="form-row form-row--3">
+              <div class="form-group">
+                <label for="cardExp">Expiry</label>
+                <input type="text" id="cardExp" placeholder="MM/YY" required>
+              </div>
+              <div class="form-group">
+                <label for="cardCvc">CVC</label>
+                <input type="text" id="cardCvc" placeholder="123" required>
+              </div>
+              <div class="form-group">
+                <label for="cardZip">Billing Zip</label>
+                <input type="text" id="cardZip" placeholder="12345" required>
+              </div>
+            </div>
+
+            <div class="card-icons">
+              <span class="card-icon">Visa</span>
+              <span class="card-icon">MC</span>
+              <span class="card-icon">Amex</span>
+              <span class="card-icon">Discover</span>
+            </div>
+
+            <button type="button" class="btn btn--back" id="backToStep1">&larr; Back</button>
+            <button type="submit" class="btn btn--cta btn--full btn--complete">COMPLETE MY ORDER &rarr;</button>
+
+            <div class="secure-note">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+              <span>256-bit SSL encryption. Your information is 100% secure.</span>
+            </div>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="checkout-footer">
+    <div class="container">
+      <p>The 2 Day CEO — THE BOOK | &copy; 2026 | All rights reserved</p>
+      <p class="checkout-footer__links">
+        <a href="#">Terms of Service</a> &middot;
+        <a href="#">Privacy Policy</a> &middot;
+        <a href="#">Contact Support</a>
+      </p>
+    </div>
+  </footer>
+
+  <script src="checkout.js"></script>
+</body>
+</html>
